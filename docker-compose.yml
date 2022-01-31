@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+    db:
+        build: .docker/postgres
+        container_name: api_db
+        restart: always
+        tty: true
+        ports:
+            - "5432:5432"
+        volumes:
+            - .docker/dbdata:/var/lib/postgresql/data
+        environment:
+            - POSTGRES_PASSWORD=docker
+            - POSTGRES_DB=apiDb
+            - POSTGRES_USER=postgres
